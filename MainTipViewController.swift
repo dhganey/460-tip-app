@@ -8,15 +8,17 @@
 
 import UIKit
 
-class MainTipViewController: UIViewController {
-
+class MainTipViewController: UIViewController
+{
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         NSLog("testing")
-        self.navigationController?.setToolbarHidden(false, animated: false) //todo no toolbar
+        //self.navigationController?.setToolbarHidden(false, animated: false) //todo no toolbar
+        
     }
 
     override func didReceiveMemoryWarning()
