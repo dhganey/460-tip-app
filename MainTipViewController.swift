@@ -10,24 +10,61 @@ import UIKit
 
 class MainTipViewController: UIViewController
 {
-    
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var numGuestsField: UITextField!
+    @IBOutlet weak var serviceSlider: UISlider!
+    @IBOutlet weak var billTotalField: UITextField!
+    @IBOutlet weak var billDeductionsField: UITextField!
+    @IBOutlet weak var taxRateField: UITextField!
+    @IBOutlet weak var tipRateLabel: UILabel!
+    @IBOutlet weak var totalTipLabel: UILabel!
+    @IBOutlet weak var perPersonTipLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    weak var model: TipDataObjectModel?
     
-    override func viewDidLoad()
+    required init(coder aDecoder: NSCoder)
     {
-        super.viewDidLoad()
+        super.init(coder: aDecoder)
     }
     
     override func viewWillAppear(animated: Bool)
     {
         self.setUpToolbar()
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func serviceSliderChanged(sender: UISlider)
+    {
+        
+    }
+    
+    @IBAction func numGuestsEdited(sender: AnyObject)
+    {
+        
+    }
+    
+    @IBAction func billTotalFieldChanged(sender: AnyObject)
+    {
+        
+    }
+    @IBAction func billDeductionsFieldChanged(sender: AnyObject)
+    {
+        
+    }
+    @IBAction func taxRateFieldChanged(sender: AnyObject)
+    {
+        
+    }
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+    }
+    
     
     func setUpToolbar()
     {

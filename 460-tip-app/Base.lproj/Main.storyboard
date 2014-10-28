@@ -54,24 +54,39 @@
                                 <rect key="frame" x="207" y="86" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="numGuestsEdited:" destination="t9E-oh-Kmt" eventType="editingDidEnd" id="zWQ-Fl-QvB"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bzq-Rz-QZ7">
                                 <rect key="frame" x="207" y="187" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="billTotalFieldChanged:" destination="t9E-oh-Kmt" eventType="editingDidEnd" id="r4D-tZ-Y6X"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dcP-JW-LcI">
                                 <rect key="frame" x="207" y="238" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="billDeductionsFieldChanged:" destination="t9E-oh-Kmt" eventType="editingDidEnd" id="h1M-E1-EYM"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10%" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHB-Z3-6kg">
                                 <rect key="frame" x="207" y="285" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="taxRateFieldChanged:" destination="t9E-oh-Kmt" eventType="editingDidEnd" id="9f8-6h-t9G"/>
+                                </connections>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="geQ-ZJ-UAr">
                                 <rect key="frame" x="163" y="142" width="143" height="31"/>
+                                <connections>
+                                    <action selector="serviceSliderChanged:" destination="t9E-oh-Kmt" eventType="valueChanged" id="DeQ-eQ-IDY"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tip Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyH-RO-GAR">
                                 <rect key="frame" x="16" y="339" width="65" height="21"/>
@@ -137,7 +152,16 @@
                     <navigationItem key="navigationItem" title="Main Page" id="sAb-x9-kxX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="billDeductionsField" destination="dcP-JW-LcI" id="AIu-uQ-kfy"/>
+                        <outlet property="billTotalField" destination="Bzq-Rz-QZ7" id="gwv-ZI-TCa"/>
+                        <outlet property="numGuestsField" destination="DtQ-EB-Scx" id="F4e-GA-0HG"/>
+                        <outlet property="perPersonTipLabel" destination="u1t-XX-m97" id="bjY-kJ-Tbo"/>
+                        <outlet property="serviceSlider" destination="geQ-ZJ-UAr" id="lIM-wT-fGN"/>
+                        <outlet property="taxRateField" destination="IHB-Z3-6kg" id="QRw-Z5-aV0"/>
+                        <outlet property="tipRateLabel" destination="9WZ-N3-6fw" id="8y6-88-9AH"/>
                         <outlet property="toolbar" destination="K79-u9-i41" id="eUC-TW-NlV"/>
+                        <outlet property="totalLabel" destination="xP4-LP-hwk" id="Luh-UT-i1y"/>
+                        <outlet property="totalTipLabel" destination="KSm-CQ-ZSK" id="AXf-1l-vx6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qwj-TH-Pqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
