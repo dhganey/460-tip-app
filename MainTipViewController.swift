@@ -11,20 +11,43 @@ import UIKit
 class MainTipViewController: UIViewController
 {
     
+    @IBOutlet weak var toolbar: UIToolbar!
+    
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        NSLog("testing")
-        //self.navigationController?.setToolbarHidden(false, animated: false) //todo no toolbar
-        
+        super.viewDidLoad()        
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        self.setUpToolbar()
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setUpToolbar()
+    {
+        let button1 = UIBarButtonItem(title: "Tip Tailoring", style: UIBarButtonItemStyle.Plain, target: self, action: "tipTailoringPressed")
+        button1.width = (self.toolbar.frame.width) / 2
+        let button2 = UIBarButtonItem(title: "Tip Configuration", style: UIBarButtonItemStyle.Plain, target: self, action: "tipConfigPressed")
+        button2.width = (self.toolbar.frame.width) / 2
+        let buttons = [button1, button2]
+        
+        self.toolbar.setItems(buttons, animated: true)
+    }
+    
+    func tipTailoringPressed()
+    {
+        NSLog("tip tailoring pressed")
+    }
+    
+    func tipConfigPressed()
+    {
+        NSLog("tip config pressed")
     }
     
 

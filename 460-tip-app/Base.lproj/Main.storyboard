@@ -18,9 +18,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K79-u9-i41">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem title="Item" id="d1D-vJ-903"/>
-                                </items>
+                                <items/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,6 +35,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Main Page" id="sAb-x9-kxX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="toolbar" destination="K79-u9-i41" id="eUC-TW-NlV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qwj-TH-Pqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
