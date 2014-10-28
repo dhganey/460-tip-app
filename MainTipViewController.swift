@@ -38,34 +38,35 @@ class MainTipViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func serviceSliderChanged(sender: UISlider)
-    {
-        
-    }
-    
-    @IBAction func numGuestsEdited(sender: AnyObject)
-    {
-        
-    }
-    
-    @IBAction func billTotalFieldChanged(sender: AnyObject)
-    {
-        
-    }
-    @IBAction func billDeductionsFieldChanged(sender: AnyObject)
-    {
-        
-    }
-    @IBAction func taxRateFieldChanged(sender: AnyObject)
-    {
-        
-    }
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
     
+    //TODO adjust the model before calling update
+    @IBAction func serviceSliderChanged(sender: UISlider)
+    {
+        self.updateTotals()
+    }
     
+    @IBAction func numGuestsEdited(sender: AnyObject)
+    {
+        self.updateTotals()
+    }
+    
+    @IBAction func billTotalFieldChanged(sender: AnyObject)
+    {
+        self.updateTotals()
+    }
+    @IBAction func billDeductionsFieldChanged(sender: AnyObject)
+    {
+        self.updateTotals()
+    }
+    @IBAction func taxRateFieldChanged(sender: AnyObject)
+    {
+        self.updateTotals()
+    }
+
     func setUpToolbar()
     {
         let button1 = UIBarButtonItem(title: "Tip Tailoring", style: UIBarButtonItemStyle.Plain, target: self, action: "tipTailoringPressed")
@@ -87,15 +88,13 @@ class MainTipViewController: UIViewController
         NSLog("tip config pressed")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateTotals()
+    {
+        
     }
-    */
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        //TODO
+    }
 }
