@@ -25,6 +25,13 @@ class MainTipViewController: UIViewController
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
+        
+        //init the model
+        self.model = TipDataObjectModel()
+        
+        //set up the slider
+        self.serviceSlider.maximumValue = 5.0
+        self.serviceSlider.minimumValue = 0.0
     }
     
     override func viewWillAppear(animated: Bool)
@@ -46,11 +53,13 @@ class MainTipViewController: UIViewController
     //TODO adjust the model before calling update
     @IBAction func serviceSliderChanged(sender: UISlider)
     {
+        self.model?.serviceQuality = Double(self.serviceSlider.value)
         self.updateTotals()
     }
     
     @IBAction func numGuestsEdited(sender: AnyObject)
     {
+        //TODO
         self.updateTotals()
     }
     
