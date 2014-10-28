@@ -15,7 +15,7 @@ class MainTipViewController: UIViewController
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()        
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool)
@@ -33,7 +33,7 @@ class MainTipViewController: UIViewController
     {
         let button1 = UIBarButtonItem(title: "Tip Tailoring", style: UIBarButtonItemStyle.Plain, target: self, action: "tipTailoringPressed")
         button1.width = (self.toolbar.frame.width) / 2
-        let button2 = UIBarButtonItem(title: "Tip Configuration", style: UIBarButtonItemStyle.Plain, target: self, action: "tipConfigPressed")
+        let button2 = UIBarButtonItem(title: "Configuration", style: UIBarButtonItemStyle.Plain, target: self, action: "tipConfigPressed")
         button2.width = (self.toolbar.frame.width) / 2
         let buttons = [button1, button2]
         

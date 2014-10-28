@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		637ACC8919FFF743004C02D9 /* TipDataObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637ACC8819FFF743004C02D9 /* TipDataObjectModel.swift */; };
 		638300DA19FF26A200013C98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638300D919FF26A200013C98 /* AppDelegate.swift */; };
 		638300DF19FF26A200013C98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638300DD19FF26A200013C98 /* Main.storyboard */; };
 		638300E119FF26A200013C98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638300E019FF26A200013C98 /* Images.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		637ACC8819FFF743004C02D9 /* TipDataObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipDataObjectModel.swift; sourceTree = "<group>"; };
 		638300D419FF26A200013C98 /* 460-tip-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "460-tip-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		638300D819FF26A200013C98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		638300D919FF26A200013C98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				638300F919FF276600013C98 /* MainTipViewController.swift */,
 				638300D919FF26A200013C98 /* AppDelegate.swift */,
 				638300DD19FF26A200013C98 /* Main.storyboard */,
+				637ACC8819FFF743004C02D9 /* TipDataObjectModel.swift */,
 				638300E019FF26A200013C98 /* Images.xcassets */,
 				638300E219FF26A200013C98 /* LaunchScreen.xib */,
 				638300D719FF26A200013C98 /* Supporting Files */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637ACC8919FFF743004C02D9 /* TipDataObjectModel.swift in Sources */,
 				638300DA19FF26A200013C98 /* AppDelegate.swift in Sources */,
 				638300FA19FF276600013C98 /* MainTipViewController.swift in Sources */,
 			);
@@ -407,6 +411,7 @@
 				638300F519FF26A200013C98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		638300F619FF26A200013C98 /* Build configuration list for PBXNativeTarget "460-tip-appTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				638300F819FF26A200013C98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
