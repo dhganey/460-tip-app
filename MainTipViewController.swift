@@ -10,14 +10,17 @@ import UIKit
 
 class MainTipViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         NSLog("testing")
+        self.navigationController?.setToolbarHidden(false, animated: false) //todo no toolbar
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
