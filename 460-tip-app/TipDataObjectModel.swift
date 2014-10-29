@@ -12,7 +12,7 @@ import UIKit
 class TipDataObjectModel: NSObject
 {
     /// The number of guests defaults to 1
-    var numGuests : Int8 = 1
+    var numGuests : Int = 1
     
     /// The service quality is a scale from 1 to 5, defaulting to 3
     var serviceQuality : Double = 3.0
@@ -67,5 +67,11 @@ class TipDataObjectModel: NSObject
     {
         //TODO
         return 10.0
+    }
+    
+    override init()
+    {
+        super.init()
+        //no implementation required since everything has a default
     }
 }

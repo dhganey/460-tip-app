@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTipViewController: UIViewController
+class MainTipViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var numGuestsField: UITextField!
@@ -20,18 +20,11 @@ class MainTipViewController: UIViewController
     @IBOutlet weak var totalTipLabel: UILabel!
     @IBOutlet weak var perPersonTipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    weak var model: TipDataObjectModel?
+    var model: TipDataObjectModel = TipDataObjectModel()
     
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
-        
-        //init the model
-        self.model = TipDataObjectModel()
-        
-        //set up the slider
-        self.serviceSlider.maximumValue = 5.0
-        self.serviceSlider.minimumValue = 0.0
     }
     
     override func viewWillAppear(animated: Bool)
@@ -48,18 +41,26 @@ class MainTipViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //set up the slider
+        self.serviceSlider.maximumValue = 5.0
+        self.serviceSlider.minimumValue = 0.0
+        
+        //set up the field
+        self.numGuestsField.delegate = self
+        self.numGuestsField.text = "0"
     }
     
-    //TODO adjust the model before calling update
     @IBAction func serviceSliderChanged(sender: UISlider)
     {
-        self.model?.serviceQuality = Double(self.serviceSlider.value)
+        self.model.serviceQuality = Double(self.serviceSlider.value)
         self.updateTotals()
     }
     
     @IBAction func numGuestsEdited(sender: AnyObject)
     {
-        //TODO
+        self.model.numGuests = self.numGuestsField.text.toInt()!
+        println("num guests edited, model total is \(self.model.numGuests)")
         self.updateTotals()
     }
     
@@ -89,12 +90,12 @@ class MainTipViewController: UIViewController
     
     func tipTailoringPressed()
     {
-        NSLog("tip tailoring pressed")
+        println("tailoring pressed")
     }
     
     func tipConfigPressed()
     {
-        NSLog("tip config pressed")
+        println("config pressed")
     }
     
     func updateTotals()
@@ -105,5 +106,13 @@ class MainTipViewController: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         //TODO
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool
+    {
+        self.view.endEditing(true)
+        textField.resignFirstResponder()
+        return true
+        
     }
 }
