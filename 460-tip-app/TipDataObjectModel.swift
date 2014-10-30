@@ -26,8 +26,20 @@ class TipDataObjectModel: NSObject
     /// Tax rate defaults to 10%
     var taxRate : Double = 0.10
     
+    /// Refers to calculated tip rate. Defaults to 20%
+    var tipRate : Double = 0.20
+    
     /// Refers to calculated tax amount
     var tax : Double = 0.0
+    
+    /// Refers to calculated total tip
+    var totalTip : Double = 0.0
+    
+    /// Refers to calculated per-person tip. Always calculated, but only relevant/shown when not tailored
+    var perpersonTip : Double = 0.0
+    
+    /// Refers to the calculated bill total with bill + tip
+    var billAndTipTotal : Double = 0.0
     
     /// Recognizes when the tip has been tailored
     var isTailored : Bool = false
@@ -49,32 +61,75 @@ class TipDataObjectModel: NSObject
     var guestArray : Array<Guest>
     
     /// Determines the tip rate by multiplying the quality of service by the tip range
-    func calculateTipRate() -> Double
+    func calculateTipRate()
     {
-        let temp = (minTipPercent + ((self.serviceQuality / 4.0) * (maxTipPercent - minTipPercent)))
-        println(temp)
-
-        return (
-            minTipPercent + ((self.serviceQuality / 4.0) * (maxTipPercent - minTipPercent))
-        )
+        self.tipRate = (minTipPercent + ((self.serviceQuality / 4.0) * (maxTipPercent - minTipPercent)))
     }
     
-    func calculateTotalTip() -> Double
+    func calculateTotalTip()
     {
-        //TODO
-        return 10.0
+        var total = 0.0
+        for guest in self.guestArray
+        {
+            total += guest.tipAmount
+        }
+        
+        self.totalTip = total
     }
     
-    func calculatePerPersonTip() -> Double
+    func calculatePerPersonTip()
     {
-        //TODO
-        return 10.0
+        //if we're not tailoring the tip, each guest just pays their share equally divided
+        var tip: Double
+        if (!self.isTailored)
+        {
+            var amt: Double
+            if (self.tipOnDeductions)
+            {
+                amt = self.billTotal
+            }
+            else
+            {
+                amt = self.billTotal - self.billDeductions
+            }
+            
+            if (self.tipOnTax)
+            {
+                amt = amt + self.tax
+            }
+            //else don't consider the tax
+            
+            tip = (self.tipRate *  amt)
+            
+            for guest in self.guestArray
+            {
+                guest.tipPercent = (100.0 / Double(numGuests))
+                guest.tipAmount = (tip / Double(numGuests))
+            }
+            
+            self.perpersonTip = (tip / Double(numGuests))
+        }
+        else //if we are tailoring the tip, each guest should already be set. just add them up
+        {
+            tip = 0
+            
+            for guest in self.guestArray
+            {
+                tip += guest.tipAmount
+            }
+            
+            self.perpersonTip = -1 //because we are tailoring
+        }
     }
     
-    func calculateTotal() -> Double
+    func calculateTax()
     {
-        //TODO
-        return 10.0
+        self.tax = (self.taxRate * (self.billTotal - self.billDeductions))
+    }
+    
+    func calculateTotal()
+    {
+        self.billAndTipTotal = (self.billTotal - self.billDeductions + self.totalTip + self.tax)
     }
     
     /**
@@ -87,12 +142,11 @@ class TipDataObjectModel: NSObject
     */
     func modelUpdate() -> (String, String, String, String)
     {
-        let tipRate = String(format: "%.2f", calculateTipRate()) //TODO round these as currency, not with truncation
-        let totalTip = String(format: "%.2f", calculateTotalTip())
-        let perpersonTip = String(format: "%.2f", calculatePerPersonTip())
-        let total = String(format: "%.2f", calculateTotal())
-        
-        return (tipRate, totalTip, perpersonTip, total)
+        //calculate tax first
+        //then perperson tip
+        //then total tip
+        //then total??? check this
+        return ("hello", "how", "are", "you")
     }
     
     override init()

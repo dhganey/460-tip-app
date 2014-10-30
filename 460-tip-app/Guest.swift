@@ -15,4 +15,7 @@ class Guest: NSObject
     
     /// Double representing the slider amount for the guest
     var tipPercent : Double = 0.0
+    
+    /// Double representing the actual tip amount for the guest (starts at 0)
+    var tipAmount : Double = 0.0
 }
