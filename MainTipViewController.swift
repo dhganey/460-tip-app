@@ -54,27 +54,34 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     @IBAction func serviceSliderChanged(sender: UISlider)
     {
         self.model.serviceQuality = Double(self.serviceSlider.value)
-        self.updateTotals()
+        self.updateUI(self.model.modelUpdate())
     }
     
     @IBAction func numGuestsEdited(sender: AnyObject)
     {
         self.model.numGuests = self.numGuestsField.text.toInt()!
-        println("num guests edited, model total is \(self.model.numGuests)")
-        self.updateTotals()
+        self.updateUI(self.model.modelUpdate())
     }
     
     @IBAction func billTotalFieldChanged(sender: AnyObject)
     {
-        self.updateTotals()
+        let tempStr = NSString(string: self.billTotalField.text)
+        self.model.billTotal = tempStr.doubleValue
+        self.updateUI(self.model.modelUpdate())
     }
+    
     @IBAction func billDeductionsFieldChanged(sender: AnyObject)
     {
-        self.updateTotals()
+        let tempStr = NSString(string: self.billDeductionsField.text)
+        self.model.billTotal = tempStr.doubleValue
+        self.updateUI(self.model.modelUpdate())
     }
+    
     @IBAction func taxRateFieldChanged(sender: AnyObject)
     {
-        self.updateTotals()
+        let tempStr = NSString(string: self.taxRateField.text)
+        self.model.taxRate = tempStr.doubleValue
+        self.updateUI(self.model.modelUpdate())
     }
 
     func setUpToolbar()
@@ -98,9 +105,12 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         println("config pressed")
     }
     
-    func updateTotals()
+    func updateUI(param: (String, String, String, String))
     {
-        
+        self.tipRateLabel.text = param.0
+        self.totalTipLabel.text = param.1
+        self.perPersonTipLabel.text = param.2
+        self.totalTipLabel.text = param.3
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)

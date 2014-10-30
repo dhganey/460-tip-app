@@ -69,6 +69,16 @@ class TipDataObjectModel: NSObject
         return 10.0
     }
     
+    /**
+    This function drives all updates for the application
+    This allows the viewcontroller to forget about logic
+    The view controller simply updates all UI elements with the result of this function
+    */
+    func modelUpdate() -> (String, String, String, String)
+    {
+        return ("hello", "how", "are", "you")
+    }
+    
     override init()
     {
         super.init()
