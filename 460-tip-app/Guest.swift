@@ -8,6 +8,11 @@
 
 import UIKit
 
-class Guest: NSObject {
-   
+class Guest: NSObject
+{
+    /// String representing the guest name
+    var name : String = "Guest"
+    
+    /// Double representing the slider amount for the guest
+    var tipPercent : Double = 0.0
 }

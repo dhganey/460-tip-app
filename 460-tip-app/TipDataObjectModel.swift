@@ -46,7 +46,7 @@ class TipDataObjectModel: NSObject
     var maxTipPercent : Double = 40.0
     
     /// Array containing Guests
-    
+    var guestArray : Array<Guest>
     
     func calculateTipRate() -> Double
     {
@@ -84,7 +84,14 @@ class TipDataObjectModel: NSObject
     
     override init()
     {
-        super.init()
-        //no implementation required since everything has a default
+        //most values have defaults but guest array does not
+        guestArray = Array<Guest>() //init
+        
+        //create the default guest
+        let myGuest = Guest()
+        myGuest.name = "Guest 1"
+        myGuest.tipPercent = 100
+        
+        guestArray.append(myGuest)
     }
 }
