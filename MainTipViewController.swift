@@ -35,7 +35,6 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidLoad()
@@ -54,6 +53,9 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     @IBAction func serviceSliderChanged(sender: UISlider)
     {
         self.model.serviceQuality = Double(self.serviceSlider.value)
+        
+        
+        
         self.updateUI(self.model.modelUpdate())
     }
     
@@ -123,6 +125,11 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         self.view.endEditing(true)
         textField.resignFirstResponder()
         return true
-        
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+    {
+        self.view.endEditing(true)
+        self.view.resignFirstResponder()
     }
 }

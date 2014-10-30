@@ -76,10 +76,18 @@ class TipDataObjectModel: NSObject
     This function drives all updates for the application
     This allows the viewcontroller to forget about logic
     The view controller simply updates all UI elements with the result of this function
+    
+    The strings in order are:
+    tip rate, total tip, per person tip, total bill 
     */
     func modelUpdate() -> (String, String, String, String)
     {
-        return ("hello", "how", "are", "you")
+        let tipRate = String(format: "%f", calculateTipRate())
+        let totalTip = String(format: "%f", calculateTotalTip())
+        let perpersonTip = String(format: "%f", calculatePerPersonTip())
+        let total = String(format: "%f", calculateTotal())
+        
+        return (tipRate, totalTip, perpersonTip, total)
     }
     
     override init()
