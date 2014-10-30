@@ -202,4 +202,14 @@ class TipDataObjectModel: NSObject
         
         guestArray.append(myGuest)
     }
+    
+    func getBillTotal() -> String
+    {
+        return String(format: "%.2f", self.billTotal) //TODO format with currency
+    }
+    
+    func getNumGuests() -> String
+    {
+        return String(format: "%d", self.numGuests)
+    }
 }

@@ -22,21 +22,25 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var totalLabel: UILabel!
     var model: TipDataObjectModel = TipDataObjectModel()
     
+    /// Initialize
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
     }
     
+    /// Before the view appears, create the toolbar at the bottom
     override func viewWillAppear(animated: Bool)
     {
         self.setUpToolbar()
     }
     
+    /// When we receive memory warnings, destroy things!
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
     }
     
+    /// When the view loads, prepare the UI elements using the model defaults
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -61,23 +65,74 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         self.billTotalField.text = String(format: "%.2f", self.model.billTotal)
     }
     
+    /// Update the model with the new service slider.
+    /// No error case
     @IBAction func serviceSliderChanged(sender: UISlider)
     {
         self.model.serviceQuality = Double(self.serviceSlider.value)
         self.updateUI(self.model.modelUpdate())
     }
     
+    /// Update the model with new guests edited
+    /// Error case: guests cannot be <= 0 or >  99
     @IBAction func numGuestsEdited(sender: AnyObject)
     {
-        self.model.numGuests = self.numGuestsField.text.toInt()!
-        self.updateUI(self.model.modelUpdate())
+        //verify:
+        if (self.numGuestsField.text.toInt() <= 0 ||
+            self.numGuestsField.text.toInt() > 99)
+        {
+            let alertController = UIAlertController(title: "Error", message: "Number of guests must be between 0 and 99", preferredStyle: UIAlertControllerStyle.Alert)
+            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                (action) in alertController.dismissViewControllerAnimated(true, completion: nil) //use lambda for action
+            })
+            alertController.addAction(OKaction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil) //now alerts are ViewControllers!
+            
+            self.numGuestsField.text = self.model.getNumGuests() //reset to model
+        }
+        else //if clear to proceed, update and recalculate
+        {
+            self.model.numGuests = self.numGuestsField.text.toInt()!
+            self.updateUI(self.model.modelUpdate())
+        }
     }
     
+    /// Update the model with new bill total
+    /// Error case: bill cannot be negative, and bill cannot be less than deductions
     @IBAction func billTotalFieldChanged(sender: AnyObject)
     {
         let tempStr = NSString(string: self.billTotalField.text)
-        self.model.billTotal = tempStr.doubleValue
-        self.updateUI(self.model.modelUpdate())
+        let billTotalDouble = tempStr.doubleValue
+        if (billTotalDouble < 0)
+        {
+            let alertController = UIAlertController(title: "Error", message: "Bill cannot be less than $0", preferredStyle: UIAlertControllerStyle.Alert)
+            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(OKaction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            self.billTotalField.text = self.model.getBillTotal() //reset to model
+        }
+        else if (billTotalDouble < (NSString(string: self.billDeductionsField.text).doubleValue))
+        {
+            let alertController = UIAlertController(title: "Error", message: "Bill cannot be less than deductions", preferredStyle: UIAlertControllerStyle.Alert)
+            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(OKaction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            self.billTotalField.text = self.model.getBillTotal() //reset to model
+        }
+        else //if clear to proceed, update and recalculate
+        {
+            self.model.billTotal = billTotalDouble
+            self.updateUI(self.model.modelUpdate())
+        }
     }
     
     @IBAction func billDeductionsFieldChanged(sender: AnyObject)
