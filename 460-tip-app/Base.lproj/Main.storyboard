@@ -162,8 +162,8 @@
                         <outlet property="toolbar" destination="K79-u9-i41" id="eUC-TW-NlV"/>
                         <outlet property="totalLabel" destination="xP4-LP-hwk" id="Luh-UT-i1y"/>
                         <outlet property="totalTipLabel" destination="KSm-CQ-ZSK" id="AXf-1l-vx6"/>
-                        <segue destination="C25-2z-7rl" kind="show" identifier="tipTailorSegue" id="5V5-R2-Mxx"/>
-                        <segue destination="1LY-aQ-nsK" kind="show" identifier="tipConfigSegue" id="erH-fx-SFh"/>
+                        <segue destination="C25-2z-7rl" kind="show" identifier="tipConfigSegue" id="5V5-R2-Mxx"/>
+                        <segue destination="1LY-aQ-nsK" kind="show" identifier="tipTailorSegue" id="erH-fx-SFh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qwj-TH-Pqb" userLabel="First Responder" sceneMemberID="firstResponder"/>

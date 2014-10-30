@@ -125,18 +125,21 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        //var navController = segue.destinationViewController as UINavigationController //first, get the nav controller
-        //var nextVC = navController.viewControllers[0] //then, get the first VC from that
-        var nextVC = segue.destinationViewController
-        if nextVC is TipTailorViewController
+        if (segue.identifier == "tipTailorSegue")
         {
-            let myVC = segue.destinationViewController as TipTailorViewController
-            myVC.model = self.model
+            let navController = segue.destinationViewController as UINavigationController
+            let nextVC = navController.topViewController as TipTailorViewController
+            nextVC.model = self.model
+        }
+        else if (segue.identifier == "tipConfigSegue")
+        {
+            let navController = segue.destinationViewController as UINavigationController
+            let nextVC = navController.topViewController as TipConfigViewController
+            nextVC.model = self.model
         }
         else
         {
-            let myVC = segue.destinationViewController as TipConfigViewController
-            myVC.model = self.model
+            println("none of the segues work")
         }
     }
     
