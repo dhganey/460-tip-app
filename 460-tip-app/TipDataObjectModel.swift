@@ -63,7 +63,7 @@ class TipDataObjectModel: NSObject
     /// Determines the tip rate by multiplying the quality of service by the tip range
     func calculateTipRate()
     {
-        self.tipRate = (minTipPercent + ((self.serviceQuality / 4.0) * (maxTipPercent - minTipPercent)))
+        self.tipRate = ((self.minTipPercent + (self.serviceQuality / 4.0) * (self.maxTipPercent - self.minTipPercent)) / 100.0) //divide by 100 b/c tip percents are whole numbers (e.g. 40)
     }
     
     func calculateTotalTip()
@@ -115,6 +115,7 @@ class TipDataObjectModel: NSObject
             
             for guest in self.guestArray
             {
+                //guest.tipPercent should already be set, don't change it! it's set by the tailoring screen
                 tip += guest.tipAmount
             }
             
@@ -142,11 +143,29 @@ class TipDataObjectModel: NSObject
     */
     func modelUpdate() -> (String, String, String, String)
     {
-        //calculate tax first
-        //then perperson tip
-        //then total tip
-        //then total??? check this
-        return ("hello", "how", "are", "you")
+        self.calculateTax()
+        self.calculateTipRate()
+        self.calculatePerPersonTip()
+        self.calculateTotalTip()
+        self.calculateTotal()
+        
+        var tipRate: String
+        var perpersonTip: String
+        if (self.isTailored)
+        {
+            tipRate = "Tip Tailored"
+            perpersonTip = "Tip Tailored"
+        }
+        else
+        {
+            tipRate = String(format: "%.2f", self.tipRate) //TODO round
+            perpersonTip = String(format: "%.2f", self.perpersonTip)
+        }
+        
+        let totalTip = String(format: "%.2f", self.totalTip)
+        let billTotal = String(format: "%.2f", self.billAndTipTotal)
+        
+        return (tipRate, perpersonTip, totalTip, billTotal)
     }
     
     override init()

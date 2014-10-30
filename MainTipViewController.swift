@@ -46,9 +46,19 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         self.serviceSlider.minimumValue = 0.0
         self.serviceSlider.value = 2.0
         
-        //set up the field
+        //set up the fields
         self.numGuestsField.delegate = self
-        self.numGuestsField.text = "0"
+        self.numGuestsField.text = String(format: "%d", self.model.guestArray.count)
+        
+        self.taxRateField.text = String(format: "%.2f", self.model.taxRate) //TODO rounding
+        
+        self.billDeductionsField.text = String(format: "%.0f", self.model.billDeductions)
+        
+        self.totalLabel.text = String(format: "%.2f", self.model.billAndTipTotal)
+        
+        self.totalTipLabel.text = String(format: "%.2f", self.model.totalTip)
+        
+        self.billTotalField.text = String(format: "%.2f", self.model.billTotal)
     }
     
     @IBAction func serviceSliderChanged(sender: UISlider)
@@ -113,7 +123,7 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         self.tipRateLabel.text = param.0
         self.totalTipLabel.text = param.1
         self.perPersonTipLabel.text = param.2
-        self.totalTipLabel.text = param.3
+        self.totalLabel.text = param.3
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
