@@ -133,6 +133,27 @@ class TipDataObjectModel: NSObject
         self.billAndTipTotal = (self.billTotal - self.billDeductions + self.totalTip + self.tax)
     }
     
+    func updateGuests()
+    {
+        if (self.guestArray.count < numGuests) //we need to add guests
+        {
+            for i in self.guestArray.count..<numGuests //runs once for each new guest
+            {
+                let g = Guest()
+                guestArray.append(g)
+            }
+        }
+        else if (self.guestArray.count > numGuests)//we need to remove guests (just kill them from the end of the array for now)
+        {
+            for i in numGuests..<self.guestArray.count //runs once for each guest to be removed
+            {
+                self.guestArray.removeLast()
+            }
+        }
+        
+        //if they're equal, we take no action
+    }
+    
     /**
     This function drives all updates for the application
     This allows the viewcontroller to forget about logic
@@ -143,6 +164,7 @@ class TipDataObjectModel: NSObject
     */
     func modelUpdate() -> (String, String, String, String)
     {
+        self.updateGuests()
         self.calculateTax()
         self.calculateTipRate()
         self.calculatePerPersonTip()
@@ -165,7 +187,7 @@ class TipDataObjectModel: NSObject
         let totalTip = String(format: "%.2f", self.totalTip)
         let billTotal = String(format: "%.2f", self.billAndTipTotal)
         
-        return (tipRate, perpersonTip, totalTip, billTotal)
+        return (tipRate, totalTip, perpersonTip, billTotal)
     }
     
     override init()
