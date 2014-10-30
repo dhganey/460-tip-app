@@ -212,4 +212,14 @@ class TipDataObjectModel: NSObject
     {
         return String(format: "%d", self.numGuests)
     }
+    
+    func getBillDeductions() -> String
+    {
+        return String(format: "%.2f", self.billDeductions) //TODO
+    }
+    
+    func getTaxRate() -> String
+    {
+        return String(format: "%.2f", self.taxRate) //TODO
+    }
 }

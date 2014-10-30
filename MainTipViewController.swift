@@ -135,18 +135,66 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    /// Update the model with the new deductions amount
+    /// Error case: deductions cannot be negative, nor greater than bill
     @IBAction func billDeductionsFieldChanged(sender: AnyObject)
     {
         let tempStr = NSString(string: self.billDeductionsField.text)
-        self.model.billDeductions = tempStr.doubleValue
-        self.updateUI(self.model.modelUpdate())
+        let deductionsTotal = tempStr.doubleValue
+        if (deductionsTotal < 0)
+        {
+            let alertController = UIAlertController(title: "Error", message: "Deductions cannot be less than 0", preferredStyle: UIAlertControllerStyle.Alert)
+            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(OKaction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            self.billDeductionsField.text = self.model.getBillDeductions() //reset to model
+        }
+        else if (deductionsTotal > (NSString(string: self.billTotalField.text).doubleValue))
+        {
+            let alertController = UIAlertController(title: "Error", message: "Deductions cannot be greater than bill amount", preferredStyle: UIAlertControllerStyle.Alert)
+            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(OKaction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            self.billDeductionsField.text = self.model.getBillDeductions() //reset to model
+        }
+        else //if clear to proceed, update and recalculate
+        {
+            self.model.billDeductions = deductionsTotal
+            self.updateUI(self.model.modelUpdate())
+        }
     }
     
+    /// Updates the model with the new tax rate
+    /// Error case: tax rate cannot be negative
     @IBAction func taxRateFieldChanged(sender: AnyObject)
     {
         let tempStr = NSString(string: self.taxRateField.text)
-        self.model.taxRate = tempStr.doubleValue
-        self.updateUI(self.model.modelUpdate())
+        let taxDouble = tempStr.doubleValue
+        if (taxDouble < 0)
+        {
+            let alertController = UIAlertController(title: "Error", message: "Tax rate cannot be negative", preferredStyle: UIAlertControllerStyle.Alert)
+            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(OKaction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            self.taxRateField.text = self.model.getTaxRate() //reset to model
+        }
+        else //if clear to proceed, update and recalculate
+        {
+            self.model.taxRate = taxDouble
+            self.updateUI(self.model.modelUpdate())
+        }
     }
 
     func setUpToolbar()
