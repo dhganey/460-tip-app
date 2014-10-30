@@ -107,12 +107,12 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     
     func tipTailoringPressed()
     {
-        println("tailoring pressed")
+        self.performSegueWithIdentifier("tipTailorSegue", sender: self)
     }
     
     func tipConfigPressed()
     {
-        println("config pressed")
+        self.performSegueWithIdentifier("tipConfigSegue", sender: self)
     }
     
     func updateUI(param: (String, String, String, String))
@@ -125,7 +125,19 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        //TODO
+        //var navController = segue.destinationViewController as UINavigationController //first, get the nav controller
+        //var nextVC = navController.viewControllers[0] //then, get the first VC from that
+        var nextVC = segue.destinationViewController
+        if nextVC is TipTailorViewController
+        {
+            let myVC = segue.destinationViewController as TipTailorViewController
+            myVC.model = self.model
+        }
+        else
+        {
+            let myVC = segue.destinationViewController as TipConfigViewController
+            myVC.model = self.model
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool
