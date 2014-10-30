@@ -42,8 +42,9 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         
         //set up the slider
-        self.serviceSlider.maximumValue = 5.0
+        self.serviceSlider.maximumValue = 4.0
         self.serviceSlider.minimumValue = 0.0
+        self.serviceSlider.value = 2.0
         
         //set up the field
         self.numGuestsField.delegate = self

@@ -14,8 +14,8 @@ class TipDataObjectModel: NSObject
     /// The number of guests defaults to 1
     var numGuests : Int = 1
     
-    /// The service quality is a scale from 1 to 5, defaulting to 3
-    var serviceQuality : Double = 3.0
+    /// The service quality is a scale from 0 to 4, defaulting to 2
+    var serviceQuality : Double = 2.0
     
     /// The bill total starts at 0
     var billTotal : Double = 0.0
@@ -48,10 +48,15 @@ class TipDataObjectModel: NSObject
     /// Array containing Guests
     var guestArray : Array<Guest>
     
+    /// Determines the tip rate by multiplying the quality of service by the tip range
     func calculateTipRate() -> Double
     {
-        //TODO
-        return 10.0
+        let temp = (minTipPercent + ((self.serviceQuality / 4.0) * (maxTipPercent - minTipPercent)))
+        println(temp)
+
+        return (
+            minTipPercent + ((self.serviceQuality / 4.0) * (maxTipPercent - minTipPercent))
+        )
     }
     
     func calculateTotalTip() -> Double
@@ -82,10 +87,10 @@ class TipDataObjectModel: NSObject
     */
     func modelUpdate() -> (String, String, String, String)
     {
-        let tipRate = String(format: "%f", calculateTipRate())
-        let totalTip = String(format: "%f", calculateTotalTip())
-        let perpersonTip = String(format: "%f", calculatePerPersonTip())
-        let total = String(format: "%f", calculateTotal())
+        let tipRate = String(format: "%.2f", calculateTipRate()) //TODO round these as currency, not with truncation
+        let totalTip = String(format: "%.2f", calculateTotalTip())
+        let perpersonTip = String(format: "%.2f", calculatePerPersonTip())
+        let total = String(format: "%.2f", calculateTotal())
         
         return (tipRate, totalTip, perpersonTip, total)
     }
