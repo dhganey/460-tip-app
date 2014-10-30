@@ -8,9 +8,27 @@
 
 import UIKit
 
-class TipTailorTableViewController: UITableViewController {
+class TipTailorTableViewController: UITableViewController
+{
+    var model: TipDataObjectModel = TipDataObjectModel()
+    
+    required init(coder aDecoder: NSCoder)
+    {
+        super.init()
+    }
+    
+    override init(style: UITableViewStyle)
+    {
+        super.init(style: UITableViewStyle.Plain)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations

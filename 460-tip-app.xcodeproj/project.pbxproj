@@ -43,7 +43,7 @@
 		638300F919FF276600013C98 /* MainTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTipViewController.swift; path = ../MainTipViewController.swift; sourceTree = "<group>"; };
 		6385FE931A01BC2700B566D1 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		6385FE951A01FB7900B566D1 /* TipConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipConfigViewController.swift; sourceTree = "<group>"; };
-		6385FE9B1A02A00800B566D1 /* TipTailorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipTailorTableViewController.swift; sourceTree = "<group>"; };
+		6385FE9B1A02A00800B566D1 /* TipTailorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipTailorTableViewController.swift; path = ../TipTailorTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,6 @@
 		638300CB19FF26A200013C98 = {
 			isa = PBXGroup;
 			children = (
-				6385FE9B1A02A00800B566D1 /* TipTailorTableViewController.swift */,
 				638300D619FF26A200013C98 /* 460-tip-app */,
 				638300EC19FF26A200013C98 /* 460-tip-appTests */,
 				638300D519FF26A200013C98 /* Products */,
@@ -86,6 +85,7 @@
 		638300D619FF26A200013C98 /* 460-tip-app */ = {
 			isa = PBXGroup;
 			children = (
+				6385FE9B1A02A00800B566D1 /* TipTailorTableViewController.swift */,
 				638300F919FF276600013C98 /* MainTipViewController.swift */,
 				638300D919FF26A200013C98 /* AppDelegate.swift */,
 				638300DD19FF26A200013C98 /* Main.storyboard */,

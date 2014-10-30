@@ -231,7 +231,7 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         if (segue.identifier == "tipTailorSegue")
         {
             let navController = segue.destinationViewController as UINavigationController
-            let nextVC = navController.topViewController as TipTailorViewController
+            let nextVC = navController.topViewController as TipTailorTableViewController
             nextVC.model = self.model
         }
         else if (segue.identifier == "tipConfigSegue")
