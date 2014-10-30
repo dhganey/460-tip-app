@@ -64,9 +64,6 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     @IBAction func serviceSliderChanged(sender: UISlider)
     {
         self.model.serviceQuality = Double(self.serviceSlider.value)
-        
-        
-        
         self.updateUI(self.model.modelUpdate())
     }
     
@@ -86,7 +83,7 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     @IBAction func billDeductionsFieldChanged(sender: AnyObject)
     {
         let tempStr = NSString(string: self.billDeductionsField.text)
-        self.model.billTotal = tempStr.doubleValue
+        self.model.billDeductions = tempStr.doubleValue
         self.updateUI(self.model.modelUpdate())
     }
     
