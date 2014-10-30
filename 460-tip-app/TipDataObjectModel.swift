@@ -45,6 +45,9 @@ class TipDataObjectModel: NSObject
     /// Set by the config screen. By default, max tip for great service is 40$
     var maxTipPercent : Double = 40.0
     
+    /// Array containing Guests
+    
+    
     func calculateTipRate() -> Double
     {
         //TODO

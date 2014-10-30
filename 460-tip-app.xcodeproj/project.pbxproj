@@ -14,6 +14,7 @@
 		638300E419FF26A200013C98 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638300E219FF26A200013C98 /* LaunchScreen.xib */; };
 		638300F019FF26A200013C98 /* _60_tip_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638300EF19FF26A200013C98 /* _60_tip_appTests.swift */; };
 		638300FA19FF276600013C98 /* MainTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638300F919FF276600013C98 /* MainTipViewController.swift */; };
+		6385FE941A01BC2700B566D1 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385FE931A01BC2700B566D1 /* Guest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		638300EE19FF26A200013C98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		638300EF19FF26A200013C98 /* _60_tip_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60_tip_appTests.swift; sourceTree = "<group>"; };
 		638300F919FF276600013C98 /* MainTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTipViewController.swift; path = ../MainTipViewController.swift; sourceTree = "<group>"; };
+		6385FE931A01BC2700B566D1 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				638300D919FF26A200013C98 /* AppDelegate.swift */,
 				638300DD19FF26A200013C98 /* Main.storyboard */,
 				637ACC8819FFF743004C02D9 /* TipDataObjectModel.swift */,
+				6385FE931A01BC2700B566D1 /* Guest.swift */,
 				638300E019FF26A200013C98 /* Images.xcassets */,
 				638300E219FF26A200013C98 /* LaunchScreen.xib */,
 				638300D719FF26A200013C98 /* Supporting Files */,
@@ -217,6 +220,7 @@
 			files = (
 				637ACC8919FFF743004C02D9 /* TipDataObjectModel.swift in Sources */,
 				638300DA19FF26A200013C98 /* AppDelegate.swift in Sources */,
+				6385FE941A01BC2700B566D1 /* Guest.swift in Sources */,
 				638300FA19FF276600013C98 /* MainTipViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
