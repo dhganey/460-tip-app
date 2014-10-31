@@ -29,7 +29,7 @@ class TipTailorTableViewController: UITableViewController, UITableViewDelegate
     
     override func viewWillAppear(animated: Bool)
     {
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "guestCell")
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "myNewCell")
     }
 
     override func viewDidLoad()
@@ -64,9 +64,18 @@ class TipTailorTableViewController: UITableViewController, UITableViewDelegate
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("guestCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("myNewCell") as? UITableViewCell
+        if !(cell != nil)
+        {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "myNewCell")
+        }
         
-        return cell
+        //by this point, cell cannot be nil unless the issue is with the reuse identifier
+        //issue is definitely with the reuse identifier
+        let textField = cell!.viewWithTag(123) as UITextField
+        textField.text = self.model.guestArray[indexPath.row as Int].name
+        
+        return cell!
     }
 
     /*
