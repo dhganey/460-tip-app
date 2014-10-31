@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TipTailorTableViewController: UITableViewController
+class TipTailorTableViewController: UITableViewController, UITableViewDelegate
 {
     var model: TipDataObjectModel = TipDataObjectModel()
     
@@ -26,11 +26,16 @@ class TipTailorTableViewController: UITableViewController
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "guestCell")
+    }
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -38,34 +43,31 @@ class TipTailorTableViewController: UITableViewController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if (self.model.numGuests != self.model.guestArray.count)
+        {
+            println("GUESTS IS NOT EQUAL TO NUMGUESTS")
+        }
+        return self.model.numGuests
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("guestCell", forIndexPath: indexPath) as UITableViewCell
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
