@@ -140,6 +140,7 @@ class TipDataObjectModel: NSObject
             for i in self.guestArray.count..<numGuests //runs once for each new guest
             {
                 let g = Guest()
+                g.name = String(format: "Guest %d", self.guestArray.count + 1)
                 guestArray.append(g)
             }
         }

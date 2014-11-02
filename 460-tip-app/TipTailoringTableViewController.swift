@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TipTailoringTableViewController: UITableViewController
+class TipTailoringTableViewController: UITableViewController, UITableViewDataSource
 {
     var model : TipDataObjectModel?
     
@@ -43,10 +43,12 @@ class TipTailoringTableViewController: UITableViewController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("myGuestCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("myGuestCell", forIndexPath: indexPath) as GuestTableViewCell
 
-        let textField = cell.viewWithTag(123) as UITextField
-        textField.text = self.model!.guestArray[indexPath.row as Int].name
+        cell.tableView = self.tableView //maintain weak references here
+        cell.tableViewController = self
+        
+        cell.nameField!.text = self.model!.guestArray[indexPath.row as Int].name
         
         return cell
     }

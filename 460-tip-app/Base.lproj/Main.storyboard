@@ -179,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myGuestCell" id="slh-er-1bx">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="myGuestCell" id="slh-er-1bx" customClass="GuestTableViewCell" customModule="_60_tip_app" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="slh-er-1bx" id="CUj-9N-jyM">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -188,9 +188,29 @@
                                             <rect key="frame" x="8" y="7" width="97" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="nameFieldChanged:" destination="slh-er-1bx" eventType="editingDidEnd" id="3ED-T2-qRF"/>
+                                            </connections>
                                         </textField>
+                                        <slider opaque="NO" tag="456" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="24a-c9-ClJ">
+                                            <rect key="frame" x="123" y="7" width="118" height="31"/>
+                                            <connections>
+                                                <action selector="sliderChanged:" destination="slh-er-1bx" eventType="valueChanged" id="gFA-p8-VCw"/>
+                                            </connections>
+                                        </slider>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="789" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIc-IE-cxS">
+                                            <rect key="frame" x="270" y="11" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameField" destination="Pjd-Ao-bgd" id="96l-38-CbZ"/>
+                                    <outlet property="tipLabel" destination="xIc-IE-cxS" id="ewF-2m-lAY"/>
+                                    <outlet property="tipSlider" destination="24a-c9-ClJ" id="51k-cl-tlE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
