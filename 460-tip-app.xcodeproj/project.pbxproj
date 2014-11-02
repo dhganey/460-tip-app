@@ -16,6 +16,7 @@
 		638300FA19FF276600013C98 /* MainTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638300F919FF276600013C98 /* MainTipViewController.swift */; };
 		6385FE941A01BC2700B566D1 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385FE931A01BC2700B566D1 /* Guest.swift */; };
 		6385FE961A01FB7900B566D1 /* TipConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385FE951A01FB7900B566D1 /* TipConfigViewController.swift */; };
+		63D39D251A06E95E00B496D2 /* TipTailoringTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D39D241A06E95E00B496D2 /* TipTailoringTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		638300F919FF276600013C98 /* MainTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTipViewController.swift; path = ../MainTipViewController.swift; sourceTree = "<group>"; };
 		6385FE931A01BC2700B566D1 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		6385FE951A01FB7900B566D1 /* TipConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipConfigViewController.swift; sourceTree = "<group>"; };
+		63D39D241A06E95E00B496D2 /* TipTailoringTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipTailoringTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				638300F919FF276600013C98 /* MainTipViewController.swift */,
 				638300D919FF26A200013C98 /* AppDelegate.swift */,
 				638300DD19FF26A200013C98 /* Main.storyboard */,
+				63D39D241A06E95E00B496D2 /* TipTailoringTableViewController.swift */,
 				6385FE951A01FB7900B566D1 /* TipConfigViewController.swift */,
 				637ACC8819FFF743004C02D9 /* TipDataObjectModel.swift */,
 				6385FE931A01BC2700B566D1 /* Guest.swift */,
@@ -222,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				637ACC8919FFF743004C02D9 /* TipDataObjectModel.swift in Sources */,
+				63D39D251A06E95E00B496D2 /* TipTailoringTableViewController.swift in Sources */,
 				638300DA19FF26A200013C98 /* AppDelegate.swift in Sources */,
 				6385FE961A01FB7900B566D1 /* TipConfigViewController.swift in Sources */,
 				6385FE941A01BC2700B566D1 /* Guest.swift in Sources */,
