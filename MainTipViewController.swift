@@ -179,9 +179,22 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     {
         let tempStr = NSString(string: self.taxRateField.text)
         let taxDouble = tempStr.doubleValue
+        let billTotal = self.model.billTotal
         if (taxDouble < 0)
         {
             let alertController = UIAlertController(title: "Error", message: "Tax rate cannot be negative", preferredStyle: UIAlertControllerStyle.Alert)
+            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
+            })
+            alertController.addAction(OKaction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            self.taxRateField.text = self.model.getTaxRate() //reset to model
+        }
+        else if (taxDouble * billTotal > billTotal)
+        {
+            let alertController = UIAlertController(title: "Error", message: "Tax can't be greater than the bill", preferredStyle: UIAlertControllerStyle.Alert)
             let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
                 (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
             })
