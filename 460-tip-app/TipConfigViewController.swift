@@ -10,8 +10,11 @@ import UIKit
 
 class TipConfigViewController: UIViewController
 {
-    var model: TipDataObjectModel = TipDataObjectModel()
+    var model: TipDataObjectModel?
     
+    @IBOutlet weak var minField: UITextField!
+    @IBOutlet weak var maxField: UITextField!
+
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
@@ -20,10 +23,23 @@ class TipConfigViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        minField.text = NSString(format: "%.2f", self.model!.minTipPercent * 100.0)
+        maxField.text = NSString(format: "%.2f", self.model!.maxTipPercent * 100.0)
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func minEdited(sender: AnyObject)
+    {
+        
+    }
+    
+    @IBAction func maxEdited(sender: AnyObject)
+    {
+        
     }
 }

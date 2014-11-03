@@ -54,8 +54,8 @@ class TipDataObjectModel: NSObject
     /// Set by the config screen. By default, minimum tip for awful service is 0%
     var minTipPercent : Double = 0.0
     
-    /// Set by the config screen. By default, max tip for great service is 40$
-    var maxTipPercent : Double = 40.0
+    /// Set by the config screen. By default, max tip for great service is 40%
+    var maxTipPercent : Double = 0.40
     
     /// Array containing Guests
     var guestArray : Array<Guest>
@@ -63,7 +63,7 @@ class TipDataObjectModel: NSObject
     /// Determines the tip rate by multiplying the quality of service by the tip range
     func calculateTipRate()
     {
-        self.tipRate = ((self.minTipPercent + (self.serviceQuality / 4.0) * (self.maxTipPercent - self.minTipPercent)) / 100.0)
+        self.tipRate = (self.minTipPercent + (self.serviceQuality / 4.0) * (self.maxTipPercent - self.minTipPercent))
     }
     
     func calculateTotalTip()
