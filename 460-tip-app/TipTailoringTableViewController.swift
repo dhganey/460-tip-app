@@ -50,7 +50,10 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
         
         cell.nameField!.text = self.model!.guestArray[indexPath.row as Int].name
         let percentageFloat = NSString(format: "%f", self.model!.guestArray[indexPath.row as Int].tipPercent).floatValue
-        cell.tipSlider.value = (percentageFloat / 100.0) * (cell.tipSlider.maximumValue)
+        cell.tipSlider.value = percentageFloat * (cell.tipSlider.maximumValue)
+        let percent = self.model!.guestArray[indexPath.row as Int].tipPercent
+        let amount = self.model!.guestArray[indexPath.row as Int].tipAmount
+        cell.tipLabel.text = NSString(format: "%.0f%% -- %.2f", percent * 100.0, amount) //TODO rounding
         
         return cell
     }
@@ -91,14 +94,11 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        let nextVC = segue.destinationViewController as MainTipViewController
+        nextVC.model = self.model!
     }
-    */
-
 }

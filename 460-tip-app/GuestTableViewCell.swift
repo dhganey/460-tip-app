@@ -32,7 +32,6 @@ class GuestTableViewCell: UITableViewCell
     {
         let slider = sender as UISlider
         let indexPath = tableView!.indexPathForCell(self)
-        
         let sliderVal: Double = NSString(format: "%f", self.tipSlider.value).doubleValue
         let sliderMax: Double = NSString(format: "%f", self.tipSlider.maximumValue).doubleValue
         let sliderMin: Double = NSString(format: "%f", self.tipSlider.minimumValue).doubleValue
@@ -40,21 +39,34 @@ class GuestTableViewCell: UITableViewCell
         let sliderPercent: Double = sliderVal / (sliderMax - sliderMin)
         
         //update the guest
-        tableViewController!.model!.guestArray[indexPath!.row as Int].tipPercent = sliderPercent
+        let curGuest = tableViewController!.model!.guestArray[indexPath!.row as Int] as Guest
+        let oldTipPercent = curGuest.tipPercent
+        curGuest.tipPercent = sliderPercent //we can do this absolutely -- if the slider is at 35%, that's the tip percentage
+        curGuest.tipAmount = curGuest.tipPercent * tableViewController!.model!.totalTip //TODO check this
         
-        //update the other guests
-        let sliderChange: Double = sliderPercent / Double(self.tableViewController!.model!.numGuests)
+        //now update the other guests
+        let sliderChange = (oldTipPercent - sliderPercent) / (Double(tableViewController!.model!.numGuests) - 1) //subtract 1 to divide among REMAINING guests
         
         for (index, guest) in enumerate(tableViewController!.model!.guestArray)
         {
             if (index != indexPath!.row as Int) //don't modify the current guest!
             {
-                let newPath = NSIndexPath(forRow: index, inSection: 1)
-                let curCell = tableView!.cellForRowAtIndexPath(newPath) as GuestTableViewCell
-                curCell.tipSlider.value -= NSString(format: "%f", sliderChange).floatValue
-                guest.tipPercent -= sliderChange //TODO one of these must be incorrect
+                let curCell = tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
+                curCell.tipSlider.value += NSString(format: "%f", sliderChange).floatValue
+                guest.tipPercent += sliderChange //the guest tippercent is stored as a full percentage
+                guest.tipAmount = guest.tipPercent * tableViewController!.model!.totalTip
             }
         }
+        
+        //update the cells
+        for (index, guest) in enumerate(tableViewController!.model!.guestArray)
+        {
+            let curCell = tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
+            curCell.tipLabel.text = NSString(format: "%.0f%% -- %.2f", guest.tipPercent * 100.0, guest.tipAmount)
+        }
+        
+        tableViewController!.model!.isTailored = true
+        tableViewController!.model!.updateGuests()
     }
     
     @IBAction func nameFieldChanged(sender: UITextField!)

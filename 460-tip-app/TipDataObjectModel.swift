@@ -63,7 +63,7 @@ class TipDataObjectModel: NSObject
     /// Determines the tip rate by multiplying the quality of service by the tip range
     func calculateTipRate()
     {
-        self.tipRate = ((self.minTipPercent + (self.serviceQuality / 4.0) * (self.maxTipPercent - self.minTipPercent)) / 100.0) //divide by 100 b/c tip percents are whole numbers (e.g. 40)
+        self.tipRate = ((self.minTipPercent + (self.serviceQuality / 4.0) * (self.maxTipPercent - self.minTipPercent)) / 100.0)
     }
     
     func calculateTotalTip()
@@ -103,7 +103,7 @@ class TipDataObjectModel: NSObject
             
             for guest in self.guestArray
             {
-                guest.tipPercent = (100.0 / Double(numGuests))
+                guest.tipPercent = (1.0 / Double(numGuests))
                 guest.tipAmount = (tip / Double(numGuests))
             }
             
@@ -144,7 +144,7 @@ class TipDataObjectModel: NSObject
                 g.name = String(format: "Guest %d", self.guestArray.count + 1)
                 if (!self.isTailored)
                 {
-                    g.tipPercent = (100.0 / Double(numGuests))
+                    g.tipPercent = (1.0 / Double(numGuests))
                 }
                 
                 guestArray.append(g)
@@ -160,7 +160,7 @@ class TipDataObjectModel: NSObject
             {
                 for g in guestArray
                 {
-                    g.tipPercent = (100.0 / Double(numGuests))
+                    g.tipPercent = (1.0 / Double(numGuests))
                 }
             }
         }
@@ -212,7 +212,7 @@ class TipDataObjectModel: NSObject
         //create the default guest
         let myGuest = Guest()
         myGuest.name = "Guest 1"
-        myGuest.tipPercent = 100
+        myGuest.tipPercent = 1.0
         
         guestArray.append(myGuest)
     }
