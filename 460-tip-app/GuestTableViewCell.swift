@@ -66,7 +66,6 @@ class GuestTableViewCell: UITableViewCell
         }
         
         tableViewController!.model!.isTailored = true
-        tableViewController!.model!.updateGuests()
     }
     
     @IBAction func nameFieldChanged(sender: UITextField!)

@@ -95,10 +95,4 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
     */
 
     // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        let nextVC = segue.destinationViewController as MainTipViewController
-        nextVC.model = self.model!
-    }
 }

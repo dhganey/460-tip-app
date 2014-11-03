@@ -32,6 +32,7 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     override func viewWillAppear(animated: Bool)
     {
         self.setUpToolbar()
+        self.updateUI(self.model.modelUpdate())
     }
     
     /// When we receive memory warnings, destroy things!
@@ -237,6 +238,7 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         self.totalTipLabel.text = param.1
         self.perPersonTipLabel.text = param.2
         self.totalLabel.text = param.3
+        println("UI updated")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
