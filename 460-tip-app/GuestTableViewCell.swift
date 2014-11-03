@@ -30,7 +30,31 @@ class GuestTableViewCell: UITableViewCell
     
     @IBAction func sliderChanged(sender: AnyObject)
     {
+        let slider = sender as UISlider
+        let indexPath = tableView!.indexPathForCell(self)
         
+        let sliderVal: Double = NSString(format: "%f", self.tipSlider.value).doubleValue
+        let sliderMax: Double = NSString(format: "%f", self.tipSlider.maximumValue).doubleValue
+        let sliderMin: Double = NSString(format: "%f", self.tipSlider.minimumValue).doubleValue
+        
+        let sliderPercent: Double = sliderVal / (sliderMax - sliderMin)
+        
+        //update the guest
+        tableViewController!.model!.guestArray[indexPath!.row as Int].tipPercent = sliderPercent
+        
+        //update the other guests
+        let sliderChange: Double = sliderPercent / Double(self.tableViewController!.model!.numGuests)
+        
+        for (index, guest) in enumerate(tableViewController!.model!.guestArray)
+        {
+            if (index != indexPath!.row as Int) //don't modify the current guest!
+            {
+                let newPath = NSIndexPath(forRow: index, inSection: 1)
+                let curCell = tableView!.cellForRowAtIndexPath(newPath) as GuestTableViewCell
+                curCell.tipSlider.value -= NSString(format: "%f", sliderChange).floatValue
+                guest.tipPercent -= sliderChange //TODO one of these must be incorrect
+            }
+        }
     }
     
     @IBAction func nameFieldChanged(sender: UITextField!)

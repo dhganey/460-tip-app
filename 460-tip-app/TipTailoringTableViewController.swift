@@ -49,6 +49,8 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
         cell.tableViewController = self
         
         cell.nameField!.text = self.model!.guestArray[indexPath.row as Int].name
+        let percentageFloat = NSString(format: "%f", self.model!.guestArray[indexPath.row as Int].tipPercent).floatValue
+        cell.tipSlider.value = (percentageFloat / 100.0) * (cell.tipSlider.maximumValue)
         
         return cell
     }

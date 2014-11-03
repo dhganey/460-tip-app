@@ -140,7 +140,13 @@ class TipDataObjectModel: NSObject
             for i in self.guestArray.count..<numGuests //runs once for each new guest
             {
                 let g = Guest()
+                
                 g.name = String(format: "Guest %d", self.guestArray.count + 1)
+                if (!self.isTailored)
+                {
+                    g.tipPercent = (100.0 / Double(numGuests))
+                }
+                
                 guestArray.append(g)
             }
         }
@@ -149,6 +155,13 @@ class TipDataObjectModel: NSObject
             for i in numGuests..<self.guestArray.count //runs once for each guest to be removed
             {
                 self.guestArray.removeLast()
+            }
+            if (!self.isTailored) //restore the tip percentages
+            {
+                for g in guestArray
+                {
+                    g.tipPercent = (100.0 / Double(numGuests))
+                }
             }
         }
         
