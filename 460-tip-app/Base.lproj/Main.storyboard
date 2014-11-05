@@ -223,7 +223,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTq-np-MtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="1153"/>
+            <point key="canvasLocation" x="571" y="1153"/>
         </scene>
         <!--Tip Config-->
         <scene sceneID="Orw-Cf-Nri">
@@ -315,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpH-ax-XsO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1823" y="1167"/>
+            <point key="canvasLocation" x="1379" y="1153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pdc-pS-Np3">
@@ -333,7 +333,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBz-0W-r4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-295" y="365"/>
+            <point key="canvasLocation" x="-99" y="381"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O90-cd-Ucn">
@@ -351,7 +351,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DX3-js-212" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="1167"/>
+            <point key="canvasLocation" x="975" y="1153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Fi-fa-VIj">
@@ -369,7 +369,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnj-Ng-emv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="251" y="1157"/>
+            <point key="canvasLocation" x="115" y="1153"/>
         </scene>
     </scenes>
 </document>
