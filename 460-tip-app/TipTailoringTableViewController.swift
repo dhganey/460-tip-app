@@ -46,7 +46,7 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
         if (indexPath.row as Int == 0) //first cell is bill total
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("billTotalCell", forIndexPath: indexPath) as BillTotalTableViewCell
-            cell.billLabel.text = NSString(format: "Bill and tip: %.2f", self.model!.billAndTipTotal)
+            cell.billLabel.text = NSString(format: "Total tip: $%.2f --- Total bill: $%.2f", self.model!.totalTip, self.model!.billAndTipTotal)
             return cell;
         }
         let cell = tableView.dequeueReusableCellWithIdentifier("myGuestCell", forIndexPath: indexPath) as GuestTableViewCell

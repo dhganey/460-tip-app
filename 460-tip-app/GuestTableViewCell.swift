@@ -63,8 +63,7 @@ class GuestTableViewCell: UITableViewCell
 
         //update the top cell
         let topCell = self.tableViewController!.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as BillTotalTableViewCell
-        topCell.billLabel.text = NSString(format: "Bill and Tip: %.2f", self.tableViewController!.model!.billAndTipTotal)
-    }
+        topCell.billLabel.text = NSString(format: "Total tip: $%.2f --- Total bill: $%.2f", self.tableViewController!.model!.totalTip, self.tableViewController!.model!.billAndTipTotal)    }
     
     /// When the name field is changed, update that guest in the model
     @IBAction func nameFieldChanged(sender: UITextField!)
