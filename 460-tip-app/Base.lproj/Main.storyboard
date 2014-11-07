@@ -179,37 +179,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="myGuestCell" id="slh-er-1bx" customClass="GuestTableViewCell" customModule="_60_tip_app" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="billTotalCell" id="slh-er-1bx" customClass="BillTotalTableViewCell" customModule="_60_tip_app" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="slh-er-1bx" id="CUj-9N-jyM">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" tag="123" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pjd-Ao-bgd">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTa-90-smI">
+                                            <rect key="frame" x="8" y="13" width="304" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="billLabel" destination="wTa-90-smI" id="A27-xl-OgS"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="myGuestCell" id="Ng9-g0-QJy" customClass="GuestTableViewCell" customModule="_60_tip_app" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ng9-g0-QJy" id="Opy-Rr-8pb">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="123" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="voh-Ge-2jt">
                                             <rect key="frame" x="8" y="9" width="87" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
-                                                <action selector="nameFieldChanged:" destination="slh-er-1bx" eventType="editingDidEnd" id="3ED-T2-qRF"/>
+                                                <action selector="nameFieldChanged:" destination="Ng9-g0-QJy" eventType="editingDidEnd" id="PTb-Di-s7j"/>
                                             </connections>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="789" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIc-IE-cxS">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="789" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfx-J2-0yN">
                                             <rect key="frame" x="225" y="13" width="87" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <slider opaque="NO" tag="456" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="24a-c9-ClJ">
+                                        <slider opaque="NO" tag="456" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gqs-oG-Rci">
                                             <rect key="frame" x="101" y="8" width="118" height="31"/>
                                             <connections>
-                                                <action selector="sliderChanged:" destination="slh-er-1bx" eventType="valueChanged" id="gFA-p8-VCw"/>
+                                                <action selector="sliderChanged:" destination="Ng9-g0-QJy" eventType="valueChanged" id="0G5-D9-eND"/>
                                             </connections>
                                         </slider>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="nameField" destination="Pjd-Ao-bgd" id="96l-38-CbZ"/>
-                                    <outlet property="tipLabel" destination="xIc-IE-cxS" id="ewF-2m-lAY"/>
-                                    <outlet property="tipSlider" destination="24a-c9-ClJ" id="51k-cl-tlE"/>
+                                    <outlet property="nameField" destination="voh-Ge-2jt" id="8Vz-Kr-40d"/>
+                                    <outlet property="tipLabel" destination="tfx-J2-0yN" id="JrD-tR-KRG"/>
+                                    <outlet property="tipSlider" destination="gqs-oG-Rci" id="PBU-dQ-P1r"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -223,7 +240,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTq-np-MtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="571" y="1153"/>
+            <point key="canvasLocation" x="571" y="1151"/>
         </scene>
         <!--Tip Config-->
         <scene sceneID="Orw-Cf-Nri">

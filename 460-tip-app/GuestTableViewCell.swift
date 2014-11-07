@@ -43,17 +43,21 @@ class GuestTableViewCell: UITableViewCell
         let sliderPercent: Double = sliderVal / (sliderMax - sliderMin)
         
         //update the guest
-        self.tableViewController!.model!.guestArray[indexPath!.row as Int].tipAmount = NSString(format: "%f", self.tipSlider.value).doubleValue
+        self.tableViewController!.model!.guestArray[indexPath!.row as Int - 1].tipAmount = NSString(format: "%f", self.tipSlider.value).doubleValue
         
         //update the cells
         for (index, guest) in enumerate(self.tableViewController!.model!.guestArray)
         {
-            let curCell = self.tableViewController!.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
+            let curCell = self.tableViewController!.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index+1, inSection: 0)) as GuestTableViewCell
             curCell.tipLabel.text = NSString(format: "%.2f", guest.tipAmount)
         }
         
         //update the model
-        self.tableViewController!.model!.calculateTotalTip()
+        self.tableViewController!.model!.modelUpdate()
+        
+        //update the top cell
+        let topCell = self.tableViewController!.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as BillTotalTableViewCell
+        topCell.billLabel.text = NSString(format: "Bill and Tip: %.2f", self.tableViewController!.model!.billAndTipTotal)
     }
     
     /// When the name field is changed, update that guest in the model
@@ -63,6 +67,6 @@ class GuestTableViewCell: UITableViewCell
         let indexPath = self.tableViewController!.tableView!.indexPathForCell(self)
         
         //update the guest
-        self.tableViewController!.model!.guestArray[indexPath!.row as Int].name = nameField.text
+        self.tableViewController!.model!.guestArray[indexPath!.row as Int - 1].name = nameField.text
     }
 }

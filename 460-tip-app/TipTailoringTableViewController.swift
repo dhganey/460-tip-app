@@ -37,20 +37,26 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.model!.numGuests
+        return self.model!.numGuests + 1 //plus 1 to account for the bill total cell
     }
 
     /// Creates a cell using the model
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        if (indexPath.row as Int == 0) //first cell is bill total
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("billTotalCell", forIndexPath: indexPath) as BillTotalTableViewCell
+            cell.billLabel.text = NSString(format: "Bill and tip: %.2f", self.model!.billAndTipTotal)
+            return cell;
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier("myGuestCell", forIndexPath: indexPath) as GuestTableViewCell
 
         cell.tableViewController = self //maintain weak reference here
         
-        cell.nameField!.text = self.model!.guestArray[indexPath.row as Int].name
+        cell.nameField!.text = self.model!.guestArray[indexPath.row as Int - 1].name
         cell.tipSlider.maximumValue = NSString(format: "%f", self.model!.maxTipPercent * self.model!.billTotal).floatValue //TODO adjust for tippable amount
         cell.tipSlider.minimumValue = NSString(format: "%f", self.model!.minTipPercent * self.model!.billTotal).floatValue //this too
-        let amount = self.model!.guestArray[indexPath.row as Int].tipAmount
+        let amount = self.model!.guestArray[indexPath.row as Int - 1].tipAmount
         cell.tipSlider.value = NSString(format: "%f", amount).floatValue
         cell.tipLabel.text = NSString(format: "%.2f", amount) //TODO rounding
         
