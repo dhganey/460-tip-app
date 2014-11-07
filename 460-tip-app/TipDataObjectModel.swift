@@ -204,6 +204,7 @@ class TipDataObjectModel: NSObject
         return (tipRate, totalTip, perpersonTip, billTotal)
     }
     
+    /// Init method initializes the guest array and adds one starting guest
     override init()
     {
         //most values have defaults but guest array does not

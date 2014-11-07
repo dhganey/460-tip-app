@@ -10,7 +10,7 @@ import UIKit
 
 class GuestTableViewCell: UITableViewCell
 {
-    var tableViewController: TipTailoringTableViewController?
+    var tableViewController: TipTailoringTableViewController? //weak reference to parent tableviewcontroller
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,10 +23,13 @@ class GuestTableViewCell: UITableViewCell
         // Configure the view for the selected state
     }
 
+    /// Outlets for storyboard UI fields
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var tipSlider: UISlider!
     @IBOutlet weak var tipLabel: UILabel!
     
+    
+    ///When the slider is changed, update the guest and refresh the cell totals
     @IBAction func sliderChanged(sender: AnyObject)
     {
         self.tableViewController!.model!.isTailored = true
@@ -53,6 +56,7 @@ class GuestTableViewCell: UITableViewCell
         self.tableViewController!.model!.calculateTotalTip()
     }
     
+    /// When the name field is changed, update that guest in the model
     @IBAction func nameFieldChanged(sender: UITextField!)
     {
         let textField = sender as UITextField

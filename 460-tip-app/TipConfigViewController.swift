@@ -10,10 +10,9 @@ import UIKit
 
 class TipConfigViewController: UIViewController
 {
-    var model: TipDataObjectModel?
+    var model: TipDataObjectModel? //weak reference to singleton model
 
-    
-
+    /// IBOutlets tied to storyboard UI fields
     @IBOutlet weak var maxField: UITextField!
     @IBOutlet weak var minField: UITextField!
     @IBOutlet weak var tipOnTaxSwitch: UISwitch!
@@ -40,6 +39,7 @@ class TipConfigViewController: UIViewController
         super.didReceiveMemoryWarning()
     }
     
+    /// When the min field is edited, checks for errors and updates model
     @IBAction func minEdited(sender: AnyObject)
     {
         let minStr: NSString = self.minField.text
@@ -78,6 +78,7 @@ class TipConfigViewController: UIViewController
         }
     }
     
+    /// When the max field is edited, checks for errors and updates the model
     @IBAction func maxEdited(sender: AnyObject)
     {
         let maxStr: NSString = self.maxField.text
@@ -118,11 +119,13 @@ class TipConfigViewController: UIViewController
 
     }
     
+    /// When the switch is toggled, toggle the model
     @IBAction func tipOnTaxToggled(sender: AnyObject)
     {
         self.model!.tipOnTax = !self.model!.tipOnTax
     }
     
+    /// When the switch is toggled, toggle the model
     @IBAction func tipOnDeductionsToggled(sender: AnyObject)
     {
         self.model!.tipOnDeductions = !self.model!.tipOnDeductions

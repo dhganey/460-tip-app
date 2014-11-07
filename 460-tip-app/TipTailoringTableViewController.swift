@@ -10,7 +10,7 @@ import UIKit
 
 class TipTailoringTableViewController: UITableViewController, UITableViewDataSource
 {
-    var model : TipDataObjectModel?
+    var model : TipDataObjectModel? //weak reference to singleton model
     
     override func viewDidLoad()
     {
@@ -40,7 +40,7 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
         return self.model!.numGuests
     }
 
-    
+    /// Creates a cell using the model
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("myGuestCell", forIndexPath: indexPath) as GuestTableViewCell
