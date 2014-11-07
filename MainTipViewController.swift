@@ -224,20 +224,7 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
     
     func tipTailoringPressed()
     {
-        if (self.numGuestsField.text.toInt() <= 1) //cannot tailor if only one guest!
-        {
-            let alertController = UIAlertController(title: "Error", message: "You cannot tailor a tip with only one guest", preferredStyle: UIAlertControllerStyle.Alert)
-            let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
-                (action) in alertController.dismissViewControllerAnimated(true, completion: nil)
-            })
-            alertController.addAction(OKaction)
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
-        }
-        else
-        {
-            self.performSegueWithIdentifier("tipTailorSegue", sender: self)
-        }
+        self.performSegueWithIdentifier("tipTailorSegue", sender: self)
     }
     
     func tipConfigPressed()
