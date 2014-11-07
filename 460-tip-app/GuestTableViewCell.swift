@@ -29,6 +29,8 @@ class GuestTableViewCell: UITableViewCell
     
     @IBAction func sliderChanged(sender: AnyObject)
     {
+        self.tableViewController!.model!.isTailored = true
+
         let slider = sender as UISlider
         let indexPath = self.tableViewController!.tableView!.indexPathForCell(self)
         let sliderVal: Double = NSString(format: "%f", self.tipSlider.value).doubleValue
@@ -38,33 +40,17 @@ class GuestTableViewCell: UITableViewCell
         let sliderPercent: Double = sliderVal / (sliderMax - sliderMin)
         
         //update the guest
-        let curGuest = tableViewController!.model!.guestArray[indexPath!.row as Int] as Guest
-        let oldTipPercent = curGuest.tipPercent
-        curGuest.tipPercent = sliderPercent //we can do this absolutely -- if the slider is at 35%, that's the tip percentage
-        curGuest.tipAmount = curGuest.tipPercent * tableViewController!.model!.totalTip //TODO check this
-        
-        //now update the other guests
-        let sliderChange = (oldTipPercent - sliderPercent) / (Double(tableViewController!.model!.numGuests) - 1) //subtract 1 to divide among REMAINING guests
-        
-        for (index, guest) in enumerate(tableViewController!.model!.guestArray)
-        {
-            if (index != indexPath!.row as Int) //don't modify the current guest!
-            {
-                let curCell = self.tableViewController!.tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
-                curCell.tipSlider.value += NSString(format: "%f", sliderChange).floatValue
-                guest.tipPercent += sliderChange //the guest tippercent is stored as a full percentage
-                guest.tipAmount = guest.tipPercent * tableViewController!.model!.totalTip
-            }
-        }
+        self.tableViewController!.model!.guestArray[indexPath!.row as Int].tipAmount = NSString(format: "%f", self.tipSlider.value).doubleValue
         
         //update the cells
-        for (index, guest) in enumerate(tableViewController!.model!.guestArray)
+        for (index, guest) in enumerate(self.tableViewController!.model!.guestArray)
         {
-            let curCell = self.tableViewController!.tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
-            curCell.tipLabel.text = NSString(format: "%.0f%% -- %.2f", guest.tipPercent * 100.0, guest.tipAmount)
+            let curCell = self.tableViewController!.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
+            curCell.tipLabel.text = NSString(format: "%.2f", guest.tipAmount)
         }
         
-        self.tableViewController!.model!.isTailored = true
+        //update the model
+        self.tableViewController!.model!.calculateTotalTip()
     }
     
     @IBAction func nameFieldChanged(sender: UITextField!)

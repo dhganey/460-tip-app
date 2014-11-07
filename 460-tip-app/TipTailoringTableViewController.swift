@@ -48,11 +48,11 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
         cell.tableViewController = self //maintain weak reference here
         
         cell.nameField!.text = self.model!.guestArray[indexPath.row as Int].name
-        let percentageFloat = NSString(format: "%f", self.model!.guestArray[indexPath.row as Int].tipPercent).floatValue
-        cell.tipSlider.value = percentageFloat * (cell.tipSlider.maximumValue)
-        let percent = self.model!.guestArray[indexPath.row as Int].tipPercent
+        cell.tipSlider.maximumValue = NSString(format: "%f", self.model!.maxTipPercent * self.model!.billTotal).floatValue //TODO adjust for tippable amount
+        cell.tipSlider.minimumValue = NSString(format: "%f", self.model!.minTipPercent * self.model!.billTotal).floatValue //this too
         let amount = self.model!.guestArray[indexPath.row as Int].tipAmount
-        cell.tipLabel.text = NSString(format: "%.0f%% -- %.2f", percent * 100.0, amount) //TODO rounding
+        cell.tipSlider.value = NSString(format: "%f", amount).floatValue
+        cell.tipLabel.text = NSString(format: "%.2f", amount) //TODO rounding
         
         return cell
     }
