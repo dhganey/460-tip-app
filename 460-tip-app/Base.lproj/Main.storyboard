@@ -307,8 +307,8 @@
                     <navigationItem key="navigationItem" title="Tip Config" id="Rf4-2e-sTv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="maxField" destination="KiZ-J8-uDy" id="rss-mt-hob"/>
-                        <outlet property="minField" destination="Vm1-3u-4Qs" id="cgA-Kg-Dd9"/>
+                        <outlet property="maxField" destination="KiZ-J8-uDy" id="edq-ge-S9r"/>
+                        <outlet property="minField" destination="Vm1-3u-4Qs" id="cBu-gi-t47"/>
                         <outlet property="tipOnDeductionsSwitch" destination="IPw-AC-IIc" id="o32-zv-FeD"/>
                         <outlet property="tipOnTaxSwitch" destination="v6I-Wo-mas" id="1qz-4E-FVZ"/>
                     </connections>
