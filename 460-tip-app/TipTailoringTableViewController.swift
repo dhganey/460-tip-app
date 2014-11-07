@@ -45,8 +45,7 @@ class TipTailoringTableViewController: UITableViewController, UITableViewDataSou
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("myGuestCell", forIndexPath: indexPath) as GuestTableViewCell
 
-        cell.tableView = self.tableView //maintain weak references here
-        cell.tableViewController = self
+        cell.tableViewController = self //maintain weak reference here
         
         cell.nameField!.text = self.model!.guestArray[indexPath.row as Int].name
         let percentageFloat = NSString(format: "%f", self.model!.guestArray[indexPath.row as Int].tipPercent).floatValue

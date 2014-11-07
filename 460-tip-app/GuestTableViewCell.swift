@@ -10,7 +10,6 @@ import UIKit
 
 class GuestTableViewCell: UITableViewCell
 {
-    var tableView: UITableView?
     var tableViewController: TipTailoringTableViewController?
     
     override func awakeFromNib() {
@@ -31,7 +30,7 @@ class GuestTableViewCell: UITableViewCell
     @IBAction func sliderChanged(sender: AnyObject)
     {
         let slider = sender as UISlider
-        let indexPath = tableView!.indexPathForCell(self)
+        let indexPath = self.tableViewController!.tableView!.indexPathForCell(self)
         let sliderVal: Double = NSString(format: "%f", self.tipSlider.value).doubleValue
         let sliderMax: Double = NSString(format: "%f", self.tipSlider.maximumValue).doubleValue
         let sliderMin: Double = NSString(format: "%f", self.tipSlider.minimumValue).doubleValue
@@ -51,7 +50,7 @@ class GuestTableViewCell: UITableViewCell
         {
             if (index != indexPath!.row as Int) //don't modify the current guest!
             {
-                let curCell = tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
+                let curCell = self.tableViewController!.tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
                 curCell.tipSlider.value += NSString(format: "%f", sliderChange).floatValue
                 guest.tipPercent += sliderChange //the guest tippercent is stored as a full percentage
                 guest.tipAmount = guest.tipPercent * tableViewController!.model!.totalTip
@@ -61,19 +60,19 @@ class GuestTableViewCell: UITableViewCell
         //update the cells
         for (index, guest) in enumerate(tableViewController!.model!.guestArray)
         {
-            let curCell = tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
+            let curCell = self.tableViewController!.tableView!.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as GuestTableViewCell
             curCell.tipLabel.text = NSString(format: "%.0f%% -- %.2f", guest.tipPercent * 100.0, guest.tipAmount)
         }
         
-        tableViewController!.model!.isTailored = true
+        self.tableViewController!.model!.isTailored = true
     }
     
     @IBAction func nameFieldChanged(sender: UITextField!)
     {
         let textField = sender as UITextField
-        let indexPath = tableView!.indexPathForCell(self)
+        let indexPath = self.tableViewController!.tableView!.indexPathForCell(self)
         
         //update the guest
-        tableViewController!.model!.guestArray[indexPath!.row as Int].name = nameField.text
+        self.tableViewController!.model!.guestArray[indexPath!.row as Int].name = nameField.text
     }
 }
