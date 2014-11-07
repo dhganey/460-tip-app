@@ -216,7 +216,7 @@ class MainTipViewController: UIViewController, UITextFieldDelegate
         let button1 = UIBarButtonItem(title: "Tip Tailoring", style: UIBarButtonItemStyle.Plain, target: self, action: "tipTailoringPressed")
         button1.width = (self.toolbar.frame.width) / 2
         let button2 = UIBarButtonItem(title: "Configuration", style: UIBarButtonItemStyle.Plain, target: self, action: "tipConfigPressed")
-        button2.width = (self.toolbar.frame.width) / 2
+        button2.width = (self.toolbar.frame.width) / 2 * 0.5
         let buttons = [button1, button2]
         
         self.toolbar.setItems(buttons, animated: true)
