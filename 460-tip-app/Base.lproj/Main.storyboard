@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Main Page-->
+        <!--Tip Calculator-->
         <scene sceneID="fZq-kt-ROl">
             <objects>
                 <viewController id="t9E-oh-Kmt" customClass="MainTipViewController" customModule="_60_tip_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Main Page" id="sAb-x9-kxX"/>
+                    <navigationItem key="navigationItem" title="Tip Calculator" id="sAb-x9-kxX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="billDeductionsField" destination="dcP-JW-LcI" id="AIu-uQ-kfy"/>
