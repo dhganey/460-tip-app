@@ -97,7 +97,7 @@ class TipConfigViewController: UIViewController
             //reset to model
             self.maxField.text = NSString(format: "%.2f", (self.model!.maxTipPercent * 100.0))
         }
-        else if (newMax < 0) //min < 0 not allowed
+        else if (newMax < 0) //max < 0 not allowed
         {
             let alertController = UIAlertController(title: "Error", message: "Max tip cannot be lower than 0", preferredStyle: UIAlertControllerStyle.Alert)
             let OKaction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {

@@ -63,7 +63,11 @@ class TipDataObjectModel: NSObject
     /// Determines the tip rate by multiplying the quality of service by the tip range
     func calculateTipRate()
     {
-        self.tipRate = (self.minTipPercent + (self.serviceQuality / 4.0) * (self.maxTipPercent - self.minTipPercent))
+        if (!self.isTailored)
+        {
+            self.tipRate = (self.minTipPercent + (self.serviceQuality / 4.0) * (self.maxTipPercent - self.minTipPercent))
+        }
+        //if tailored, tip rate has been set manually
     }
     
     func calculateTotalTip()
@@ -185,19 +189,17 @@ class TipDataObjectModel: NSObject
         self.calculateTotalTip()
         self.calculateTotal()
         
-        var tipRate: String
         var perpersonTip: String
         if (self.isTailored)
         {
-            tipRate = "Tip Tailored"
             perpersonTip = "Tip Tailored"
         }
         else
         {
-            tipRate = String(format: "%.2f", self.tipRate) //TODO round
             perpersonTip = String(format: "%.2f", self.perpersonTip)
         }
         
+        let tipRate = String(format: "%.2f", self.tipRate) //TODO round
         let totalTip = String(format: "%.2f", self.totalTip)
         let billTotal = String(format: "%.2f", self.billAndTipTotal)
         

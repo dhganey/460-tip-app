@@ -52,9 +52,15 @@ class GuestTableViewCell: UITableViewCell
             curCell.tipLabel.text = NSString(format: "%.2f", guest.tipAmount)
         }
         
-        //update the model
+        //update the model to calculate a new tip amount
         self.tableViewController!.model!.modelUpdate()
         
+        //update the tiprate
+        self.tableViewController!.model!.tipRate = (self.tableViewController!.model!.totalTip) / (self.tableViewController!.model!.billTotal)
+        
+        //update the model again
+        self.tableViewController!.model!.modelUpdate()
+
         //update the top cell
         let topCell = self.tableViewController!.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as BillTotalTableViewCell
         topCell.billLabel.text = NSString(format: "Bill and Tip: %.2f", self.tableViewController!.model!.billAndTipTotal)
