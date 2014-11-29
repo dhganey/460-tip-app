@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631640AB1A2A5AA000164C8A /* MainTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631640AA1A2A5AA000164C8A /* MainTipViewController.swift */; };
 		637ACC8919FFF743004C02D9 /* TipDataObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637ACC8819FFF743004C02D9 /* TipDataObjectModel.swift */; };
 		638300DA19FF26A200013C98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638300D919FF26A200013C98 /* AppDelegate.swift */; };
 		638300DF19FF26A200013C98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638300DD19FF26A200013C98 /* Main.storyboard */; };
 		638300E119FF26A200013C98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638300E019FF26A200013C98 /* Images.xcassets */; };
 		638300E419FF26A200013C98 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638300E219FF26A200013C98 /* LaunchScreen.xib */; };
 		638300F019FF26A200013C98 /* _60_tip_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638300EF19FF26A200013C98 /* _60_tip_appTests.swift */; };
-		638300FA19FF276600013C98 /* MainTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638300F919FF276600013C98 /* MainTipViewController.swift */; };
 		6385FE941A01BC2700B566D1 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385FE931A01BC2700B566D1 /* Guest.swift */; };
 		6385FE961A01FB7900B566D1 /* TipConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385FE951A01FB7900B566D1 /* TipConfigViewController.swift */; };
 		63880BE11A06F1BA006424C8 /* GuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63880BE01A06F1BA006424C8 /* GuestTableViewCell.swift */; };
@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		631640AA1A2A5AA000164C8A /* MainTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTipViewController.swift; sourceTree = "<group>"; };
 		637ACC8819FFF743004C02D9 /* TipDataObjectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipDataObjectModel.swift; sourceTree = "<group>"; };
 		638300D419FF26A200013C98 /* 460-tip-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "460-tip-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		638300D819FF26A200013C98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		638300E919FF26A200013C98 /* 460-tip-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "460-tip-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		638300EE19FF26A200013C98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		638300EF19FF26A200013C98 /* _60_tip_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _60_tip_appTests.swift; sourceTree = "<group>"; };
-		638300F919FF276600013C98 /* MainTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTipViewController.swift; path = ../MainTipViewController.swift; sourceTree = "<group>"; };
 		6385FE931A01BC2700B566D1 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		6385FE951A01FB7900B566D1 /* TipConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipConfigViewController.swift; sourceTree = "<group>"; };
 		63880BE01A06F1BA006424C8 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		638300D619FF26A200013C98 /* 460-tip-app */ = {
 			isa = PBXGroup;
 			children = (
-				638300F919FF276600013C98 /* MainTipViewController.swift */,
+				631640AA1A2A5AA000164C8A /* MainTipViewController.swift */,
 				638300D919FF26A200013C98 /* AppDelegate.swift */,
 				638300DD19FF26A200013C98 /* Main.storyboard */,
 				63A58FED1A0C5E0A003CEAA6 /* BillTotalTableViewCell.swift */,
@@ -232,11 +232,11 @@
 			files = (
 				637ACC8919FFF743004C02D9 /* TipDataObjectModel.swift in Sources */,
 				63A58FEE1A0C5E0A003CEAA6 /* BillTotalTableViewCell.swift in Sources */,
+				631640AB1A2A5AA000164C8A /* MainTipViewController.swift in Sources */,
 				63D39D251A06E95E00B496D2 /* TipTailoringTableViewController.swift in Sources */,
 				638300DA19FF26A200013C98 /* AppDelegate.swift in Sources */,
 				6385FE961A01FB7900B566D1 /* TipConfigViewController.swift in Sources */,
 				6385FE941A01BC2700B566D1 /* Guest.swift in Sources */,
-				638300FA19FF276600013C98 /* MainTipViewController.swift in Sources */,
 				63880BE11A06F1BA006424C8 /* GuestTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
